@@ -1,0 +1,31 @@
+/* CUSTOMER SPECS MANAGEMENT */
+.specs-box{ background: var(--paper); border-radius:8px; padding:16px 20px; margin-bottom:16px; box-shadow: 0 12px 24px rgba(0,0,0,0.25); }
+.specs-box h3{ font-family:'Cairo', sans-serif; font-size:13px; margin:0 0 10px; color:#6B7690; }
+.specs-chips{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:10px; }
+.spec-chip{
+  display:flex; align-items:center; gap:6px; background: var(--brass-light); border:1px solid var(--brass);
+  color: var(--wood-dark); padding:5px 10px; border-radius:20px; font-size:13px; font-weight:600;
+}
+.spec-chip button{ background:none; border:none; color: var(--red); cursor:pointer; font-size:12px; padding:0; }
+.specs-add-row{ display:flex; gap:8px; }
+.specs-add-row input{ flex:1; padding:7px 10px; border:1px solid var(--paper-line); border-radius:5px; background:#FFFFFF; font-family:'Tajawal',sans-serif; font-size:13.5px; }
+
+/* CALCULATOR PICKER (inside quote form) */
+.calc-picker-list{ display:flex; flex-direction:column; gap:8px; }
+.calc-picker-item{
+  display:flex; align-items:center; justify-content:space-between;
+  background:#F4F7FC; border:1px solid var(--paper-line); border-radius:5px;
+  padding:8px 12px; font-size:13.5px; color:var(--wood-dark);
+}
+.calc-picker-item .icon-btn{ font-size:12px; }
+
+/* QUOTE FORM */
+.quote-form-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:14px; margin-bottom:16px; }
+.quote-items-table{ width:100%; border-collapse:collapse; margin-bottom:12px; }
+.quote-items-table th{ background: var(--wood-dark); color: var(--brass-light); font-family:'Cairo',sans-serif; font-size:12px; padding:8px; border:1px solid #4A5470;}
+.quote-items-table td{ border:1px solid var(--paper-line); background:#FFFFFF; padding:0; }
+.quote-items-table td input{ width:100%; border:none; background:transparent; padding:8px; font-family:'Tajawal',sans-serif; font-size:14px; text-align:center; outline:none;}
+.notes-box{ margin-top:16px; }
+.notes-box h3{ font-family:'Cairo',sans-serif; font-size:13px; color:#6B7690; }
+.note-row{ display:flex; gap:8px; align-items:center; margin-bottom:6px; }
+.note-row input[type="text"]{ flex:1; padding:7px 9px; border:1px solid var(--paper-line); border-radius:5px; background:#FFFFFF; font-family:'Tajawal',sans-serif;}

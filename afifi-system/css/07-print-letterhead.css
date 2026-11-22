@@ -1,0 +1,83 @@
+/* PRINT AREA (hidden unless printing) */
+#printArea{ display:none; }
+
+@media print{
+  @page{ size: A4; margin: 10mm; }
+  #app{ display:none !important; }
+  .modal-overlay{ display:none !important; }
+  #printArea.active{
+    display:block !important;
+    direction:rtl;
+    font-family:'Tajawal', sans-serif;
+  }
+}
+
+/* Letterhead print styling */
+.print-sheet{
+  border: 3px double #1a2b6b;
+  padding: 12px 14px;
+  width: 680px;
+  max-width: 680px;
+  min-height: 1000px;
+  margin: 0 auto;
+  color:#1a1a1a;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+.print-header{ display:flex; align-items:center; justify-content:space-between; border-bottom:2px solid #1a2b6b; padding-bottom:10px; margin-bottom:14px; flex-shrink:0;}
+.print-logo{ width:64px; height:64px; border-radius:50%; border:2px solid #12A150; display:flex; align-items:center; justify-content:center; font-size:10px; color:#12A150; text-align:center; overflow:hidden; flex-shrink:0;}
+.print-logo img{ width:100%; height:100%; object-fit:cover; }
+.print-company-name{ text-align:center; flex:1; }
+.print-company-name .ar{ font-size:19px; font-weight:800; color:#12A150; }
+.print-company-name .en{ font-size:12px; font-style:italic; text-decoration:underline; color:#1a2b6b; }
+.print-title{ text-align:center; font-size:17px; font-weight:800; text-decoration:underline; margin:12px 0; }
+.print-meta{ display:flex; justify-content:space-between; font-size:13px; margin-bottom:10px; }
+.print-intro{ font-size:13px; margin-bottom:12px; }
+.print-table{ width:100% !important; table-layout:fixed !important; border-collapse:collapse; margin-bottom:14px; }
+.print-table th, .print-table td{ border:1px solid #1a1a1a; padding:5px 3px; text-align:center; font-size:12px; word-wrap:break-word; overflow-wrap:break-word; white-space:normal; }
+.print-table th{ background:#eef1f8; font-weight:800; }
+
+/* Grid-based table (used for the quote items) - does not rely on HTML table column algorithms,
+   so it cannot overflow the page the way a <table> sometimes did. */
+.pg-table{
+  width: 100%;
+  max-width: 100%;
+  border: 1px solid #1a1a1a;
+  border-bottom: none;
+  margin-bottom: 14px;
+  box-sizing: border-box;
+}
+.pg-row{
+  display: grid;
+  grid-template-columns: 7% 38% 15% 20% 20%;
+  width: 100%;
+  border-bottom: 1px solid #1a1a1a;
+}
+.pg-cell{
+  padding: 5px 3px;
+  text-align: center;
+  font-size: 12px;
+  word-break: break-word;
+  border-left: 1px solid #1a1a1a;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.pg-cell:last-child{ border-left: none; }
+.pg-row.pg-head .pg-cell{ background:#eef1f8; font-weight:800; }
+.pg-row.pg-foot{ grid-template-columns: 80% 20%; }
+.pg-row.pg-foot .pg-cell{ font-weight:800; }
+.pg-cell.pg-span4{ text-align:left; }
+.print-notes{ font-size:12px; color:#C0343A; margin-bottom:12px; }
+.print-notes div{ margin-bottom:4px; }
+.print-closing{ font-size:13px; margin-bottom:20px; }
+.print-sign{ text-align:center; font-size:13px; margin-bottom:14px; }
+.print-footer{
+  border-top:1px solid #1a2b6b;
+  padding-top:8px;
+  font-size:10.5px;
+  text-align:center;
+  color:#333;
+  margin-top:auto; /* pins the footer to the bottom of the page regardless of content length */
+  flex-shrink:0;
+}

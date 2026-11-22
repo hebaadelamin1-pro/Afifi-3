@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>عفيفي للوجستيات — نظام الحسابات</title>
+<link rel="icon" id="favicon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230B2A5B'/%3E%3Ctext x='32' y='45' font-size='38' text-anchor='middle' fill='white' font-family='Arial' font-weight='700'%3E%D8%B9%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/01-base.css">
+<link rel="stylesheet" href="css/02-sidebar-layout.css">
+<link rel="stylesheet" href="css/03-calculator-sheet.css">
+<link rel="stylesheet" href="css/04-customers-list.css">
+<link rel="stylesheet" href="css/05-modals.css">
+<link rel="stylesheet" href="css/06-specs-picker-quote-form.css">
+<link rel="stylesheet" href="css/07-print-letterhead.css">
+<link rel="stylesheet" href="css/08-auth-and-accounts.css">
+<link rel="stylesheet" href="css/09-theme-v1.css">
+<link rel="stylesheet" href="css/10-lightbox-print-docs.css">
+<link rel="stylesheet" href="css/11-modern-ui-v2.css">
+<link rel="stylesheet" href="css/12-modern-ui-v3-calc-users.css">
+<link rel="stylesheet" href="css/13-suppliers-cubic.css">
+<link rel="stylesheet" href="css/14-sales.css">
+<link rel="stylesheet" href="css/15-clients-quotes-perms.css">
+</head>
+<body>
+
+<!-- AUTH SCREEN (login / first run setup) -->
+<div id="authScreen" class="auth-screen" style="display:none;">
+  <div class="auth-shell">
+    <aside class="auth-panel">
+      <div class="auth-panel-inner">
+        <div class="auth-logo" id="authPanelMark">ع</div>
+        <h1 class="auth-panel-title">عفيفي للوجستيات</h1>
+        <p class="auth-panel-sub">نظام الحسابات وإدارة العملاء</p>
+        <ul class="auth-points">
+          <li><span class="tick"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span>عروض أسعار وإذون تسليم جاهزة للطباعة</li>
+          <li><span class="tick"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span>متابعة العملاء والتحصيل والمتبقي أولاً بأول</li>
+          <li><span class="tick"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span>حاسبة تكلفة دقيقة للبالتات والصناديق والبكرات</li>
+        </ul>
+      </div>
+      <div class="auth-panel-foot">عفيفي لتصنيع الأخشاب</div>
+    </aside>
+
+    <main class="auth-main">
+      <div class="auth-card">
+        <div class="auth-mobile-brand">
+          <div class="brand-mark" id="authMobileMark">ع</div>
+          <div><div class="brand-title">عفيفي للوجستيات</div><div class="brand-sub">نظام الحسابات</div></div>
+        </div>
+
+        <div id="authSetupForm" style="display:none;">
+          <h2 class="auth-h">تسجيل المدير العام</h2>
+          <p class="auth-p">أول تشغيل: لا يوجد أي مستخدم. سجّل نفسك كمدير عام مسؤول عن النظام، ولك كل الصلاحيات، ومنك تحدد صلاحيات باقي المستخدمين.</p>
+          <div class="auth-field"><label for="setupFullName">الاسم الكامل</label>
+            <div class="inp"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><input type="text" id="setupFullName" autocomplete="name" placeholder="اسمك الكامل"></div></div>
+          <div class="auth-field"><label for="setupUsername">اسم المستخدم</label>
+            <div class="inp"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><input type="text" id="setupUsername" autocomplete="username" placeholder="اختر اسم مستخدم"></div></div>
+          <div class="auth-field"><label for="setupPassword">كلمة المرور</label>
+            <div class="inp"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><input type="password" id="setupPassword" autocomplete="new-password" placeholder="••••••••"><button type="button" class="pw-toggle" data-target="setupPassword" aria-label="إظهار كلمة المرور"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></button></div></div>
+          <div class="auth-field"><label for="setupPasswordConfirm">تأكيد كلمة المرور</label>
+            <div class="inp"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><input type="password" id="setupPasswordConfirm" autocomplete="new-password" placeholder="••••••••"><button type="button" class="pw-toggle" data-target="setupPasswordConfirm" aria-label="إظهار كلمة المرور"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></button></div></div>
+          <button class="primary-btn auth-submit" id="setupSubmitBtn">إنشاء الحساب والدخول</button>
+          <div class="auth-error" id="setupError"></div>
+        </div>
+
+        <div id="authLoginForm">
+          <h2 class="auth-h">تسجيل الدخول</h2>
+          <p class="auth-p">أهلاً بعودتك، أدخل بياناتك للمتابعة</p>
+          <div class="auth-field"><label for="loginUsername">اسم المستخدم</label>
+            <div class="inp"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><input type="text" id="loginUsername" autocomplete="username" placeholder="اسم المستخدم"></div></div>
+          <div class="auth-field"><label for="loginPassword">كلمة المرور</label>
+            <div class="inp"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><input type="password" id="loginPassword" autocomplete="current-password" placeholder="••••••••"><button type="button" class="pw-toggle" data-target="loginPassword" aria-label="إظهار كلمة المرور"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></button></div></div>
+          <button class="primary-btn auth-submit" id="loginSubmitBtn">دخول</button>
+          <div class="auth-error" id="loginError"></div>
+        </div>
+
+        <div class="auth-secure"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg><span>بياناتك محفوظة على جهازك فقط</span></div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<div id="app" style="display:none;">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark" id="sideBrandMark">ع</div>
+      <div>
+        <div class="brand-title">عفيفي للوجستيات</div>
+        <div class="brand-sub">عفيفي لتصنيع الأخشاب</div>
+      </div>
+    </div>
+    <nav class="nav">
+      <button class="nav-btn active" data-view="general"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M8 6h8M8 11h.01M12 11h.01M16 11h.01M8 15h.01M12 15h.01M16 15h.01M8 19h.01M12 19h.01M16 19h.01"/></svg><span>الحاسبة العامة</span></button>
+      <div class="nav-group" id="navClients">
+        <div class="nav-parent" id="clientsParent" role="button" tabindex="0" aria-expanded="false" data-perm="customers,prospects"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>العملاء</span><svg class="ic chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></div>
+        <div class="nav-sub" id="clientsSub">
+          <button class="nav-btn" data-view="clients-confirmed" data-perm="customers"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg><span>عميل الشركة (مؤكد)</span></button>
+          <button class="nav-btn" data-view="clients-prospect" data-perm="prospects"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3M12 17h.01"/></svg><span>عميل محتمل</span></button>
+        </div>
+      </div>
+      <button class="nav-btn" data-view="collections"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12V8H6a2 2 0 0 1 0-4h12v4"/><path d="M4 6v12a2 2 0 0 0 2 2h14v-4"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></svg><span>التحصيل</span></button>
+      <div class="nav-group" id="navQuotes">
+        <div class="nav-parent" id="quotesParent" role="button" tabindex="0" aria-expanded="false" data-perm="quotes,quotesSuppliers"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg><span>عروض الأسعار</span><svg class="ic chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></div>
+        <div class="nav-sub" id="quotesSub">
+          <button class="nav-btn" data-view="quotes" data-perm="quotes"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>عروض أسعار العملاء</span></button>
+          <button class="nav-btn" data-view="quotes-suppliers" data-perm="quotesSuppliers"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M1 3h15v13H1zM16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg><span>عروض أسعار الموردين</span></button>
+        </div>
+      </div>
+      <div class="nav-group" id="navSuppliers">
+        <div class="nav-parent" id="suppliersParent" role="button" tabindex="0" aria-expanded="false" data-perm="suppliers,purchases,cubic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M1 3h15v13H1zM16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg><span>الموردين</span><svg class="ic chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></div>
+        <div class="nav-sub" id="suppliersSub">
+          <button class="nav-btn" data-view="purchases"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg><span>المشتريات</span></button>
+          <button class="nav-btn" data-view="cubic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 16V8l-9-5-9 5v8l9 5zM3.3 7L12 12l8.7-5M12 22V12"/></svg><span>تكعيب الموردين</span></button>
+        </div>
+      </div>
+      <button class="nav-btn admin-only" data-view="company" style="display:none;"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4M8 6h.01M12 6h.01M16 6h.01M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01"/></svg><span>بيانات الشركة</span></button>
+      <button class="nav-btn admin-only" data-view="users" style="display:none;"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg><span>المستخدمون</span></button>
+    </nav>
+    <button class="backup-btn" id="backupBtn"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg><span>حفظ نسخة احتياطية</span></button>
+    <button class="backup-btn" id="restoreBtn"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg><span>استعادة نسخة احتياطية</span></button><input type="file" id="restoreFile" accept=".json,application/json" hidden>
+    <div class="account-box profile-card">
+      <div class="avatar" id="accountAvatar">م</div>
+      <div class="profile-info">
+        <div class="account-name" id="accountName"></div>
+        <div class="account-role" id="accountRole"></div>
+      </div>
+      <button class="logout-btn" id="logoutBtn" title="تسجيل الخروج" aria-label="تسجيل الخروج"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg></button>
+    </div>
+  </aside>
+
+  <main class="content">
+
+    <!-- GENERAL CALCULATOR VIEW -->
+    <section class="view" id="view-noperm" style="display:none;">
+      <div class="list-card" style="max-width:520px;margin:60px auto;text-align:center;padding:40px 28px;">
+        <h3 style="margin:0 0 10px;">لا توجد صلاحيات لحسابك بعد</h3>
+        <p style="color:var(--m-mute,#64748B);margin:0;">تواصل مع المدير العام ليحدد لك الأقسام المسموح لك بالدخول إليها.</p>
+      </div>
+    </section>
+
+    <section class="view" id="view-general">
+      <div class="view-header">
+        <h1>الحاسبة العامة</h1>
+        <div class="head-print"><button class="primary-btn" id="genQuoteBtn"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>طباعة عرض سعر</button><button class="secondary-btn" id="genDeliveryBtn"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M1 3h15v13H1zM16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>إذن تسليم</button></div>
+        <div class="hint">حاسبة سريعة بدون ربطها بعميل معيّن</div>
+      </div>
+      <div id="generalCalcRoot"></div>
+          </section>
+
+    <!-- COLLECTIONS VIEW -->
+    <section class="view" id="view-collections" style="display:none;">
+      <div class="view-header"><div><h1>سجل وحسابات العملاء والتحصيل</h1><div class="hint">متابعة المسحوبات والمدفوع والمتبقي لكل عميل. اضغط على العميل لفتح حاساباته.</div></div><div class="head-actions"><button class="success-btn" id="collectBtnTop"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12V8H6a2 2 0 0 1 0-4h12v4"/><path d="M4 6v12a2 2 0 0 0 2 2h14v-4"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></svg>تسجيل تحصيل</button><button class="primary-btn" id="addCustomerBtn2"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>إضافة عميل</button></div></div>
+      <div id="collectionsRoot"></div>
+    </section>
+
+    <!-- CUSTOMERS LIST VIEW -->
+    <section class="view" id="view-customers" style="display:none;">
+      <div class="view-header">
+        <div><h1 id="custTitle">العملاء</h1><div class="hint" id="custHint">عملاء الشركة المؤكدون والعملاء المحتملون</div></div>
+        <button class="primary-btn" id="addCustomerBtn">+ إضافة عميل</button>
+      </div>
+      <div id="customersListRoot"></div>
+    </section>
+
+    <!-- CUSTOMER DETAIL VIEW (list of their calculators) -->
+    <section class="view" id="view-customer-detail" style="display:none;">
+      <div class="view-header">
+        <button class="back-btn" id="backToCustomersBtn">→ رجوع للعملاء</button>
+        <div class="title-block">
+          <div class="avatar" id="customerDetailAvatar">ع</div>
+          <div><h1 id="customerDetailName"></h1><div class="sub" id="customerDetailSub"></div></div>
+        </div>
+        <div class="head-actions">
+          <button class="success-btn" id="collectBtn"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12V8H6a2 2 0 0 1 0-4h12v4"/><path d="M4 6v12a2 2 0 0 0 2 2h14v-4"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></svg>تسجيل تحصيل</button>
+          <button class="primary-btn" id="addCalcBtn"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>حاسبة جديدة</button>
+        </div>
+      </div>
+      <div id="customerSpecsRoot"></div>
+      <div id="customerAccountsRoot"></div>
+      <div id="customerCalcsListRoot"></div>
+    </section>
+
+    <!-- CUSTOMER CALCULATOR DETAIL VIEW (a single calculator) -->
+    <section class="view" id="view-customer-calc" style="display:none;">
+      <div class="view-header">
+        <button class="back-btn" id="backToCustomerBtn">← رجوع لحاسبات العميل</button>
+        <h1 id="customerCalcName"></h1>
+        <button class="success-btn" id="calcToOrderBtn"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>إضافة كطلب لحساب العميل</button>
+        <button class="primary-btn" id="printCustomerCalcBtn">🖨 طباعة</button>
+        <button class="secondary-btn" id="printCustomerCalcNoPriceBtn">🖨 طباعة بدون سعر</button>
+      </div>
+      <div id="customerCalcRoot"></div>
+    </section>
+
+    <!-- QUOTES LIST VIEW -->
+    <section class="view" id="view-quotes" style="display:none;">
+      <div class="view-header">
+        <div><h1>عروض أسعار العملاء</h1><div class="hint">كل عروض الأسعار الخاصة بالعملاء: المستقلة وما تم إنشاؤه من حساب العميل</div></div>
+        <button class="primary-btn" id="addQuoteBtn">+ عرض سعر جديد</button>
+      </div>
+      <div id="quotesListRoot"></div>
+    </section>
+
+    <!-- QUOTE FORM VIEW -->
+    <section class="view" id="view-quote-form" style="display:none;">
+      <div class="view-header">
+        <button class="back-btn" id="backToQuotesBtn">← رجوع لعروض الأسعار</button>
+        <h1>عرض سعر</h1>
+        <div class="header-actions">
+          <button class="primary-btn" id="saveQuoteBtn">💾 حفظ</button>
+          <button class="primary-btn" id="printQuoteBtn">🖨 طباعة</button>
+        </div>
+      </div>
+      <div id="quoteFormRoot"></div>
+    </section>
+
+    <!-- COMPANY SETTINGS VIEW -->
+    <section class="view" id="view-company" style="display:none;">
+      <div class="view-header">
+        <h1>بيانات الشركة</h1>
+        <div class="hint">تظهر هذه البيانات في رأس وتذييل عروض الأسعار</div>
+      </div>
+      <div id="companyFormRoot"></div>
+    </section>
+
+    <!-- USERS MANAGEMENT VIEW -->
+    <section class="view" id="view-users" style="display:none;">
+      <div class="view-header">
+        <h1>المستخدمون</h1>
+        <button class="primary-btn" id="addUserBtn"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>إنشاء مستخدم جديد</button>
+      </div>
+      <div id="usersListRoot"></div>
+    </section>
+
+    <section class="view" id="view-quotes-suppliers" style="display:none;">
+      <div class="view-header">
+        <div><h1>عروض أسعار الموردين</h1><div class="hint">كل عروض الأسعار الخاصة بالموردين</div></div>
+        <button class="primary-btn" id="addSupplierQuoteBtn">+ عرض سعر مورد</button>
+      </div>
+      <div id="supplierQuotesRoot"></div>
+    </section>
+
+    <section class="view" id="view-suppliers" style="display:none;">
+      <div class="view-header"><div><h1>الموردين</h1><div class="hint">سجل الموردين وحساباتهم ومشترياتهم</div></div><button class="primary-btn" id="addSupplierBtn">+ إضافة مورد جديد</button></div>
+      <div id="suppliersRoot"></div>
+    </section>
+    <section class="view" id="view-supplier-detail" style="display:none;">
+      <div class="view-header"><button class="back-btn" id="backToSuppliersBtn">→ رجوع للموردين</button><div class="title-block"><div class="avatar" id="sdAvatar">م</div><div><h1 id="sdName"></h1><div class="sub" id="sdSub"></div></div></div><div class="head-actions"><button class="secondary-btn" id="sdEditBtn">تعديل بيانات المورد</button></div></div>
+            <div id="supplierDetailRoot"></div>
+    </section>
+    <section class="view" id="view-purchases" style="display:none;">
+      <div class="view-header"><div><h1>المشتريات</h1><div class="hint">تسجيل المشتريات والسداد بنفس طريقة الإكسل + كشف حساب كل مورد</div></div></div>
+      <div id="purchasesRoot"></div>
+    </section>
+    <section class="view" id="view-cubic" style="display:none;">
+      <div class="view-header"><div><h1>تكعيب الموردين</h1><div class="hint">اختر المورد لعرض كل التكعيبات التي تمت له، أو افتح تكعيباً جديداً</div></div></div>
+      <div id="cubicRoot"></div>
+    </section>
+    <section class="view" id="view-cubic-edit" style="display:none;">
+      <div class="view-header"><button class="back-btn" id="ceBack">→ رجوع</button><div><h1>تكعيب خشب</h1><div class="hint">م³ = عدد × تخانة (مم) × عرض (مم) × طول (سم) ÷ 100,000,000</div></div></div>
+      <div id="cubicEditRoot"></div>
+    </section>
+
+    <!-- SALES: عرض سعر ← أمر توريد ← أمر تصنيع ← إذن مخازن -->
+    <section class="view" id="view-sales" style="display:none;">
+      <div class="view-header">
+        <button class="back-btn" id="slBack">→ رجوع لحساب العميل</button>
+        <div class="title-block"><div class="avatar" id="slAvatar">ع</div><div><h1 id="slTitle">مبيعات</h1><div class="sub" id="slSub"></div></div></div>
+      </div>
+      <div class="sl-wrap"><div class="sl-steps" id="slSteps"></div><div id="slBody"></div></div>
+    </section>
+  </main>
+</div>
+
+<!-- User add/edit modal -->
+<div class="modal-overlay" id="userModalOverlay" style="display:none;">
+  <div class="modal">
+    <h2 id="userModalTitle">إضافة مستخدم</h2>
+    <div class="modal-field">
+      <label>الاسم الكامل</label>
+      <input type="text" id="userFullNameInput" placeholder="مثال: أحمد محمد">
+    </div>
+    <div class="modal-field">
+      <label>اسم المستخدم لتسجيل الدخول</label>
+      <input type="text" id="userUsernameInput" style="direction:ltr;text-align:right;">
+    </div>
+    <div class="modal-field">
+      <label id="userPasswordLabel">كلمة المرور</label>
+      <input type="password" id="userPasswordInput" placeholder="اتركها فارغة للإبقاء عليها كما هي (عند التعديل)">
+    </div>
+    <div class="modal-grid2">
+      <div class="modal-field">
+        <label>الدور</label>
+        <select id="userRoleInput">
+          <option value="user">مستخدم</option>
+          <option value="admin">مدير عام (كل الصلاحيات)</option>
+        </select>
+      </div>
+      <div class="modal-field">
+        <label>الحالة</label>
+        <select id="userActiveInput">
+          <option value="1">مفعّل</option>
+          <option value="0">موقوف</option>
+        </select>
+      </div>
+    </div>
+    <label class="check-row" style="margin:2px 0 12px;"><input type="checkbox" id="userCanLoginInput" checked> يسمح بتسجيل الدخول</label>
+    <div class="um-wrap" id="userPermsBox">
+      <div class="um-title">الصلاحيات (الأقسام المتاحة) <span style="color:#E11D48">*</span></div>
+      <div class="um-perms" id="userPermsGrid"></div>
+      <div class="um-hint">حدّد الأقسام التي يستطيع دخولها. للتحكم الأدق (إضافة وتعديل / حذف) استخدم زر «إدارة الصلاحيات» بعد الحفظ.</div>
+    </div>
+    <div class="modal-field">
+      <label>المجموعات (افصل بينها بفاصلة)</label>
+      <input type="text" id="userGroupsInput" placeholder="مثال: المبيعات، المحاسبة">
+    </div>
+    <div class="modal-actions">
+      <button class="secondary-btn" id="cancelUserModalBtn">إلغاء</button>
+      <button class="primary-btn" id="saveUserModalBtn">حفظ</button>
+    </div>
+  </div>
+</div>
+
+<!-- Customer add/edit modal -->
+<div class="modal-overlay" id="customerModalOverlay" style="display:none;">
+  <div class="modal">
+    <h2 id="customerModalTitle">إضافة عميل</h2>
+    <div class="modal-field">
+      <label>اسم العميل</label>
+      <input type="text" id="customerNameInput" placeholder="مثال: شركة عشراتكس">
+    </div>
+    <div class="modal-field">
+      <label>رقم الهاتف</label>
+      <input type="text" id="customerPhoneInput" placeholder="اختياري">
+    </div>
+    <div class="modal-field">
+      <label>العنوان</label>
+      <input type="text" id="customerAddressInput" placeholder="اختياري">
+    </div>
+    <div class="modal-actions">
+      <button class="secondary-btn" id="cancelCustomerModalBtn">إلغاء</button>
+      <button class="primary-btn" id="saveCustomerModalBtn">حفظ</button>
+    </div>
+  </div>
+</div>
+
+<!-- Confirm delete modal -->
+<div class="modal-overlay" id="confirmModalOverlay" style="display:none;">
+  <div class="modal">
+    <h2 id="confirmModalTitle">تأكيد الحذف</h2>
+    <p id="confirmModalText" class="confirm-text"></p>
+    <div class="modal-actions">
+      <button class="secondary-btn" id="confirmCancelBtn">إلغاء</button>
+      <button class="danger-btn" id="confirmOkBtn">حذف</button>
+    </div>
+  </div>
+</div>
+
+<!-- Order (job) add/edit modal -->
+<div class="modal-overlay" id="orderModalOverlay" style="display:none;">
+  <div class="modal modal-lg">
+    <h2 id="orderModalTitle">طلب شغل جديد</h2>
+    <div class="modal-field">
+      <label>وصف الطلب</label>
+      <input type="text" id="orderDescInput" placeholder="مثال: طلبية بالتات 113×113">
+    </div>
+    <div class="modal-grid2">
+      <div class="modal-field">
+        <label>الكمية (اختياري)</label>
+        <input type="number" id="orderQtyInput" min="0" placeholder="مثال: 10">
+      </div>
+      <div class="modal-field">
+        <label>سعر الوحدة (اختياري)</label>
+        <input type="number" id="orderUnitPriceInput" min="0" placeholder="مثال: 380">
+      </div>
+    </div>
+    <div class="modal-grid2">
+      <div class="modal-field">
+        <label>المبلغ الإجمالي (ج.م)</label>
+        <input type="number" id="orderAmountInput" placeholder="الكمية × السعر أو اكتبه يدوي">
+      </div>
+      <div class="modal-field">
+        <label>التاريخ</label>
+        <input type="date" id="orderDateInput">
+      </div>
+    </div>
+
+    <div class="tax-box-order">
+      <label class="check-row"><input type="checkbox" id="orderTaxOn"> إضافة الضريبة على هذا الطلب</label>
+      <div id="orderTaxBody" style="display:none;margin-top:10px;">
+        <div class="modal-grid2">
+          <div class="modal-field">
+            <label>نوع الضريبة</label>
+            <select id="orderTaxType"><option value="percent">نسبة مئوية (%)</option><option value="fixed">مبلغ ثابت (ج.م)</option></select>
+          </div>
+          <div class="modal-field">
+            <label>قيمة الضريبة</label>
+            <input type="number" id="orderTaxValue" min="0" step="any" placeholder="مثال: 14">
+          </div>
+        </div>
+        <div class="deposit-calc" id="orderTaxCalc"></div>
+      </div>
+    </div>
+
+    <div class="deposit-box">
+      <div class="deposit-title"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12V8H6a2 2 0 0 1 0-4h12v4"/><path d="M4 6v12a2 2 0 0 0 2 2h14v-4"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></svg>العربون (الدفعة المقدمة)</div>
+      <div class="modal-grid2">
+        <div class="modal-field">
+          <label>نسبة العربون %</label>
+          <input type="number" id="orderDepositPctInput" min="0" max="100" step="any" placeholder="مثال: 30">
+        </div>
+        <div class="modal-field">
+          <label>قيمة العربون (ج.م)</label>
+          <input type="number" id="orderDepositAmountInput" min="0" step="any" placeholder="تُحسب تلقائياً أو اكتبها">
+        </div>
+      </div>
+      <div class="deposit-calc" id="orderDepositCalc"></div>
+      <label class="check-row" id="orderDepositReceivedRow"><input type="checkbox" id="orderDepositReceived"> تم استلام العربون الآن (يُسجَّل كدفعة مباشرة)</label>
+      <div class="modal-field" id="orderDepositMethodWrap" style="display:none;margin:10px 0 0;">
+        <label>طريقة استلام العربون</label>
+        <select id="orderDepositMethod">
+          <option value="كاش">كاش</option>
+          <option value="تحويل بنكي">تحويل بنكي</option>
+          <option value="انستاباي">انستاباي</option>
+          <option value="شيك">شيك</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="modal-actions">
+      <button class="secondary-btn" id="cancelOrderModalBtn">إلغاء</button>
+      <button class="primary-btn" id="saveOrderModalBtn">حفظ</button>
+    </div>
+  </div>
+</div>
+
+<!-- Payment / collection modal -->
+<div class="modal-overlay" id="paymentModalOverlay" style="display:none;">
+  <div class="modal">
+    <h2>تسجيل دفعة / تحصيل</h2>
+    <div class="modal-field" id="paymentCustomerWrap">
+      <label>العميل / الشركة</label>
+      <select id="paymentCustomerSelect"></select>
+    </div>
+    <div class="modal-field">
+      <label>تطبيق الدفعة على</label>
+      <select id="paymentTargetSelect"></select>
+    </div>
+    <div class="pay-info" id="paymentInfo"></div>
+    <div class="modal-field">
+      <label>المبلغ المحصَّل (ج.م)</label>
+      <div class="amount-row">
+        <input type="number" id="paymentAmountInput" min="0" step="any" placeholder="0">
+        <button type="button" class="secondary-btn" id="paymentFullBtn">سداد كامل المتبقي</button>
+      </div>
+    </div>
+    <div class="modal-grid2">
+      <div class="modal-field">
+        <label>طريقة الدفع</label>
+        <select id="paymentMethodInput">
+          <option value="كاش">كاش</option>
+          <option value="تحويل بنكي">تحويل بنكي</option>
+          <option value="انستاباي">انستاباي</option>
+          <option value="شيك">شيك</option>
+        </select>
+      </div>
+      <div class="modal-field">
+        <label>التاريخ</label>
+        <input type="date" id="paymentDateInput">
+      </div>
+    </div>
+    <div class="modal-field">
+      <label>ملاحظة (اختياري)</label>
+      <input type="text" id="paymentNoteInput" placeholder="مثال: دفعة تحت الحساب / عربون">
+    </div>
+    <div class="modal-field">
+      <label>إيصال الدفع (صورة أو PDF، اختياري)</label>
+      <label class="upload-btn"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>رفع إيصال (صورة أو PDF)
+        <input type="file" id="paymentReceiptInput" accept="image/*,application/pdf,.pdf" multiple>
+      </label>
+      <div class="images-grid" id="paymentReceiptsPreview"></div>
+    </div>
+    <div class="modal-actions">
+      <button class="secondary-btn" id="cancelPaymentModalBtn">إلغاء</button>
+      <button class="success-btn" id="savePaymentModalBtn"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>حفظ التحصيل</button>
+    </div>
+  </div>
+</div>
+
+<!-- Print area (used only when printing) -->
+<div id="printArea"></div>
+
+<script src="js/storage.js"></script>
+<script src="js/core/state.js"></script>
+<script src="js/core/ui-helpers.js"></script>
+<script src="js/core/calculation.js"></script>
+<script src="js/core/calculator-ui.js"></script>
+<script src="js/core/navigation-general.js"></script>
+<script src="js/core/customers.js"></script>
+<script src="js/core/customer-accounts.js"></script>
+<script src="js/core/confirm-modal.js"></script>
+<script src="js/core/quotes.js"></script>
+<script src="js/core/company.js"></script>
+<script src="js/core/printing.js"></script>
+<script src="js/core/backup-migration.js"></script>
+<script src="js/core/auth.js"></script>
+<script src="js/core/users.js"></script>
+<script src="js/core/lightbox-documents.js"></script>
+<script src="js/core/collections.js"></script>
+<script src="js/core/login-extras-init.js"></script>
+<script src="js/data/suppliers-seed.js"></script>
+<script src="js/modules/suppliers-cubic-party.js"></script>
+<script src="js/modules/statements-print-xlsx.js"></script>
+<script src="js/modules/sales.js"></script>
+<script src="js/modules/supplier-quotes.js"></script>
+</body>
+</html>

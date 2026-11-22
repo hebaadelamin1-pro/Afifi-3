@@ -1,0 +1,131 @@
+/* =====================================================================
+   15 — العملاء (جدول + تبويبات + محتمل/مؤكد) · عروض الأسعار · الصلاحيات
+   ===================================================================== */
+
+/* ---------- قائمة العملاء الأفقية ---------- */
+.ct-tabs{display:flex;gap:6px;flex-wrap:wrap;background:#fff;border:1px solid var(--m-line);border-radius:14px;padding:4px}
+.ct-tab{border:0;background:transparent;border-radius:11px;padding:8px 14px;font:700 13px 'Cairo','Tajawal',sans-serif;color:var(--m-mute);cursor:pointer;display:flex;align-items:center;gap:8px;transition:background .15s,color .15s}
+.ct-tab b{background:var(--m-soft);color:var(--m-blue);border-radius:99px;padding:0 8px;font-size:12px;line-height:20px;min-width:22px;text-align:center}
+.ct-tab:hover{color:var(--m-blue)}
+.ct-tab.on{background:var(--m-blue2);color:#fff}
+.ct-tab.on b{background:rgba(255,255,255,.22);color:#fff}
+.ct-search{flex:1;min-width:240px;max-width:420px;height:42px;border:1.5px solid var(--m-line);border-radius:14px;padding:0 14px;font:600 13.5px 'Cairo','Tajawal',sans-serif;background:#fff;color:var(--m-ink);margin-inline-start:auto;transition:border-color .15s,box-shadow .15s}
+.ct-search:focus{outline:none;border-color:var(--m-sky);box-shadow:0 0 0 4px rgba(14,165,233,.14)}
+.ct-table .cell-user{display:flex;align-items:center;gap:10px}
+.ct-table .avatar{width:34px;height:34px;font-size:14px;flex:none}
+.ct-table .ct-sub{font-size:11.5px;color:var(--m-mute);font-weight:500;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sx-table td.num{display:table-cell;font-variant-numeric:tabular-nums;white-space:nowrap}
+.ct-badge{display:inline-block;padding:3px 11px;border-radius:99px;font-size:12px;font-weight:800;white-space:nowrap}
+.ct-badge.ok{background:var(--m-ok-soft);color:var(--m-ok)}
+.ct-badge.pro{background:var(--m-warn-soft);color:var(--m-warn)}
+.sx-act.approve{background:var(--m-ok);color:#fff}
+.sx-act.approve:hover{filter:brightness(.94)}
+.sx-act.pay{background:var(--m-ok-soft);color:var(--m-ok)}
+
+/* ---------- عروض الأسعار (عملاء / موردين) ---------- */
+.qh-table td.items{max-width:300px;color:var(--m-mute);font-size:12.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.qh-src{display:inline-block;padding:2px 10px;border-radius:99px;font-size:11.5px;font-weight:700;background:var(--m-sky-soft);color:var(--m-sky);white-space:nowrap}
+.qh-src.acc{background:var(--m-soft);color:var(--m-blue)}
+.qh-table tbody tr{cursor:pointer}
+.qh-detail h2{margin-bottom:4px}
+.qh-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:12px 0}
+.qh-meta div{background:var(--m-soft);border-radius:12px;padding:10px 12px}
+.qh-meta small{display:block;color:var(--m-mute);font-size:11.5px;font-weight:600}
+.qh-meta b{font-size:14px;color:var(--m-navy)}
+.qh-items{width:100%;border-collapse:collapse;font-size:13px;margin:8px 0}
+.qh-items th{background:var(--m-soft);color:var(--m-navy);padding:8px 10px;text-align:center;font-weight:700}
+.qh-items td{border-bottom:1px solid var(--m-line2);padding:8px 10px;text-align:center}
+.qh-items td.r{text-align:right}
+.qh-items tfoot td{font-weight:800;background:var(--m-soft);border:0}
+.qh-notes{background:#FFFBEB;border:1px solid #FDE68A;border-radius:12px;padding:10px 14px;font-size:13px;margin-top:8px}
+.qh-form input,.qh-form select,.qh-form textarea{width:100%;height:42px;border:1.5px solid var(--m-line);border-radius:12px;padding:0 12px;font:600 13.5px 'Cairo','Tajawal',sans-serif;background:#F8FBFF;color:var(--m-ink);box-sizing:border-box}
+.qh-form textarea{height:auto;padding:10px 12px;line-height:1.7}
+.qh-form input:focus,.qh-form select:focus,.qh-form textarea:focus{outline:none;border-color:var(--m-sky);background:#fff;box-shadow:0 0 0 4px rgba(14,165,233,.14)}
+.qh-form .qh-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.qh-form .qh-rows{width:100%;table-layout:fixed;border-collapse:separate;border-spacing:0 6px;margin:6px 0}
+.qh-form .qh-rows th{font-size:12px;color:var(--m-mute);text-align:center;font-weight:700}
+.qh-form .qh-rows td{padding:0 4px}
+.qh-form .qh-rows input{min-width:0}
+.qh-form .qh-rows td.tt{text-align:center;font-weight:800;color:var(--m-navy);white-space:nowrap}
+.qh-form .qh-x{border:0;background:var(--m-due-soft);color:var(--m-due);border-radius:10px;width:34px;height:34px;cursor:pointer;font-size:15px}
+.qh-tot{display:flex;justify-content:space-between;align-items:center;background:var(--m-soft);border-radius:12px;padding:10px 14px;font-weight:800;color:var(--m-navy);margin-top:6px}
+@media (max-width:640px){.qh-form .qh-grid{grid-template-columns:1fr}}
+
+/* ---------- جدول الصلاحيات ---------- */
+.perm-modal{width:760px;max-width:95vw;max-height:92vh;overflow:auto}
+.perm-tools{display:flex;gap:8px;margin:6px 0 10px}
+.perm-table{border:1px solid var(--m-line);border-radius:16px;overflow:hidden}
+.perm-head,.perm-line{display:grid;grid-template-columns:minmax(220px,1fr) 78px 112px 78px;align-items:center;gap:6px;padding:10px 14px}
+.perm-head{background:var(--m-soft);color:var(--m-navy);font-weight:800;font-size:12.5px}
+.perm-head span:not(:first-child),.perm-c{text-align:center;display:flex;justify-content:center;align-items:center}
+.perm-line{border-top:1px solid var(--m-line2)}
+.perm-line:hover{background:#F8FBFF}
+.perm-name b{display:block;font-size:13.5px;color:var(--m-ink)}
+.perm-name small{display:block;color:var(--m-mute);font-size:11.5px;font-weight:500;line-height:1.5}
+.perm-c i{color:var(--m-line);font-style:normal}
+.perm-line .switch:disabled{opacity:.4}
+@media (max-width:640px){.perm-head,.perm-line{grid-template-columns:1fr 54px 64px 54px;padding:10px}}
+
+/* =====================================================================
+   تطبيق صلاحيات الإضافة/التعديل والحذف (classes تُضاف على body من users.js)
+   np-<القسم>-edit  = لا يملك إضافة/تعديل      np-<القسم>-del = لا يملك حذف
+   data-cs على body = حالة العميل المفتوح (confirmed / prospect)
+   ===================================================================== */
+
+/* ---- العملاء المؤكدون / المحتملون: القائمة ---- */
+.np-customers-edit #customersListRoot tr[data-status="confirmed"] :is([data-action="edit"],[data-action="collect"]),
+.np-prospects-edit #customersListRoot tr[data-status="prospect"] :is([data-action="edit"],[data-action="approve"]),
+.np-customers-del #customersListRoot tr[data-status="confirmed"] [data-action="delete"],
+.np-prospects-del #customersListRoot tr[data-status="prospect"] [data-action="delete"]{display:none!important}
+.np-customers-edit.np-prospects-edit #addCustomerBtn{display:none!important}
+
+/* ---- العملاء: صفحات الحساب والحاسبة والمبيعات (حسب حالة العميل المفتوح) ---- */
+:is(.np-customers-edit[data-cs="confirmed"],.np-prospects-edit[data-cs="prospect"]) :is(#view-customer-detail,#view-customer-calc,#view-sales) :is(input,select,textarea){pointer-events:none;background:#F1F5FB!important}
+:is(.np-customers-edit[data-cs="confirmed"],.np-prospects-edit[data-cs="prospect"]) :is(#view-customer-detail,#view-customer-calc,#view-sales) :is(#addCalcBtn,#collectBtn,#addOrderBtn,#calcToOrderBtn,[data-action="edit"],[data-action="rename"],[data-action="pay"],.icon-btn.edit,.add-row-btn,.row-del-btn,.spec-chip button,.specs-add-row,.sl-x,.sl-add,[data-add]){display:none!important}
+:is(.np-customers-del[data-cs="confirmed"],.np-prospects-del[data-cs="prospect"]) :is(#view-customer-detail,#view-customer-calc,#view-sales) :is(.icon-btn.delete,[data-action="delete"],.sl-del){display:none!important}
+
+/* ---- التحصيل ---- */
+.np-collections-edit :is(#view-collections [data-collect],#collectBtnTop,#addCustomerBtn2){display:none!important}
+
+/* ---- عروض أسعار العملاء ---- */
+.np-quotes-edit :is(#addQuoteBtn,#view-quotes [data-action="edit"],#view-quotes [data-action="toAccount"]){display:none!important}
+.np-quotes-edit #view-quote-form :is(input,select,textarea){pointer-events:none;background:#F1F5FB!important}
+.np-quotes-edit #view-quote-form :is(#saveQuoteBtn,.add-row-btn,.row-del-btn){display:none!important}
+.np-quotes-del #view-quotes [data-action="delete"]{display:none!important}
+
+/* ---- عروض أسعار الموردين ---- */
+.np-quotesSuppliers-edit :is(#addSupplierQuoteBtn,#view-quotes-suppliers [data-action="edit"],#view-suppliers [data-q]){display:none!important}
+.np-quotesSuppliers-del #view-quotes-suppliers [data-action="delete"]{display:none!important}
+
+/* ---- الموردون ---- */
+.np-suppliers-edit :is(#addSupplierBtn,#view-suppliers [data-e],#view-supplier-detail .sx-act:not(.open):not(.del)){display:none!important}
+.np-suppliers-del :is(#view-suppliers [data-d],#view-supplier-detail [data-dc]){display:none!important}
+
+/* ---- المشتريات ---- */
+.np-purchases-edit #view-purchases :is(.primary-btn:not([data-keep]),.sx-act:not(.open),.pm-add){display:none!important}
+.np-purchases-edit #view-purchases :is(input,select,textarea):not(#supQ):not([type="search"]):not(.sx-q){pointer-events:none;background:#F1F5FB!important}
+.np-purchases-del #view-purchases :is(.sx-act.del,[data-del],[data-delr]){display:none!important}
+
+/* ---- تكعيب الموردين ---- */
+.np-cubic-edit :is(#view-cubic,#view-cubic-edit,#view-supplier-detail) :is(#cbNew,#ceSave,#ceAddB,#sdNewCub,[data-addr]){display:none!important}
+.np-cubic-edit :is(#view-cubic-edit) :is(input,select,textarea){pointer-events:none;background:#F1F5FB!important}
+.np-cubic-del :is(#view-cubic,#view-cubic-edit,#view-supplier-detail) :is([data-delb],[data-del],[data-delr],[data-dc]){display:none!important}
+
+/* ---- الحاسبة العامة / بيانات الشركة / المستخدمون ---- */
+.np-general-edit #view-general :is(input,select,textarea){pointer-events:none;background:#F1F5FB!important}
+.np-company-edit #view-company :is(input,select,textarea){pointer-events:none;background:#F1F5FB!important}
+.np-company-edit #view-company :is(#saveCompanyBtn,.add-row-btn,.row-del-btn,.file-btn){display:none!important}
+.np-users-edit :is(#addUserBtn,#view-users [data-action="edit"],#view-users [data-action="perms"],#view-users [data-action="branches"]){display:none!important}
+.np-users-del #view-users [data-action="delete"]{display:none!important}
+
+/* شبكة الأقسام داخل نافذة المستخدم (خارج .modal-field عشان قواعد الحقول العامة ما تأثرش) */
+.um-wrap{margin:4px 0 14px}
+.um-title{font-size:12.5px;font-weight:600;color:var(--m-mute);margin-bottom:8px}
+.um-perms{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.um-perms .um-perm{display:flex;align-items:center;justify-content:flex-start;gap:14px;margin:0;padding:12px 16px;border:1px solid var(--m-line);border-radius:12px;background:#fff;cursor:pointer;font-size:14px;font-weight:600;color:var(--m-ink);line-height:1.4;transition:border-color .15s,background .15s}
+.um-perms .um-perm span{flex:0 1 auto}
+.um-perms .um-perm input[type="checkbox"]{appearance:auto;-webkit-appearance:checkbox;width:18px;height:18px;min-width:18px;max-width:18px;padding:0;margin:0;border:0;background:none;box-shadow:none;flex:none;accent-color:#0B6FA3;cursor:pointer}
+.um-perms .um-perm:hover{border-color:#9CD3F1;background:var(--m-sky-soft)}
+.um-perms .um-perm:has(input:checked){border-color:#0B6FA3;background:var(--m-sky-soft);font-weight:700}
+.um-hint{font-size:12px;color:var(--m-mute);margin-top:10px;line-height:1.7}
+@media(max-width:560px){.um-perms{grid-template-columns:1fr}}

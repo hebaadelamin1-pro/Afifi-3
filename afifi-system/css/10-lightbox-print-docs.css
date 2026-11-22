@@ -1,0 +1,76 @@
+/* ===== تكبير الصور ===== */
+.img-thumb img,.payment-receipt-thumb{cursor:zoom-in}
+#lightbox{display:none;position:fixed;inset:0;z-index:500;background:rgba(5,8,18,.94);align-items:center;justify-content:center;cursor:zoom-out}
+#lightbox img{max-width:96vw;max-height:94vh;object-fit:contain;border-radius:6px}
+#lightbox button{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));inset-inline-start:18px;width:44px;height:44px;border-radius:50%;border:0;background:#ffffff26;color:#fff;font-size:22px;cursor:pointer}
+/* ===== شريط الطباعة ===== */
+.print-bar{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px;padding:16px 20px;background:var(--n-card);border-radius:16px}
+.print-bar .primary-btn,.print-bar .secondary-btn{padding:11px 22px;font-size:14.5px}
+/* ===== نافذة الطباعة ===== */
+.doc-modal{width:1120px;max-width:96vw;max-height:92vh;overflow:auto}
+.doc-body{display:grid;grid-template-columns:320px minmax(0,1fr);gap:20px}
+.doc-designs{display:grid;gap:8px}
+.doc-prev{background:var(--n-bg);border-radius:12px;padding:12px;overflow:auto;max-height:70vh}
+.doc-preview{zoom:.5;width:210mm;margin:0 auto;box-shadow:0 2px 12px #0003}
+@media (max-width:900px){.doc-body{grid-template-columns:1fr}.doc-preview{zoom:.4}}
+/* ===== مستند عرض السعر / إذن التسليم (ألوان ثابتة للطباعة) ===== */
+.pq,.pq *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.pq{font-family:'Cairo','Tajawal',sans-serif;color:#111;background:#fff;direction:rtl;padding:14mm;min-height:270mm;font-size:14px;line-height:1.7;position:relative}
+.pq-head{display:flex;align-items:center;gap:16px;margin-bottom:8px}
+.pq-logo{width:80px;height:80px;border-radius:50%;overflow:hidden;display:grid;place-items:center;flex:none;font-size:11px;color:#888;border:1px solid #ccc}
+.pq-logo img{width:100%;height:100%;object-fit:cover}
+.pq-names{flex:1}.pq-names b{display:block;font-size:23px;font-weight:800}.pq-names span{font-size:13px}
+.pq-title{text-align:center;font-size:26px;font-weight:800;margin:16px 0}
+.pq-meta{display:flex;justify-content:space-between;gap:12px;margin-bottom:14px;font-size:15px}
+.pq table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px;min-width:0}
+.pq th,.pq td{padding:10px 8px;text-align:center}.pq td.l{text-align:start}
+.pq-notes{font-size:13px;margin-top:14px}.pq-notes ul{margin:4px 0;padding-inline-start:22px}
+.pq-note-line{margin-top:18px}
+.pq-sign{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:70px;text-align:center}
+.pq-sign div{border-top:1px solid #333;padding-top:6px}
+.pq-foot{position:absolute;inset-inline:14mm;bottom:10mm;padding-top:8px;border-top:1px solid #999;font-size:11.5px;text-align:center;line-height:1.6}
+.pq-classic{border:4px double #1F2A6B}
+.pq-classic .pq-names{text-align:center}.pq-classic .pq-names b{color:#1F2A6B}.pq-classic .pq-title{text-decoration:underline}
+.pq-classic table,.pq-classic th,.pq-classic td{border:1.5px solid #111}.pq-classic th{background:#eef1f8}
+.pq-modern{border-top:9px solid #2563EB}
+.pq-modern .pq-title{text-align:start;font-size:32px;color:#2563EB;margin:10px 0 6px}
+.pq-modern .pq-meta{background:#f3f6fc;padding:10px 14px;border-radius:8px}
+.pq-modern th{border-bottom:2px solid #2563EB;color:#2563EB}.pq-modern td{border-bottom:1px solid #e3e8f0}
+.pq-modern .tot td{background:#f3f6fc;font-weight:800;font-size:16px}
+.pq-executive .pq-head{background:#0F1B3D;color:#fff;margin:-14mm -14mm 14px;padding:16px 14mm;border-bottom:5px solid #C9A24B}
+.pq-executive .pq-logo{background:#fff;border:0}
+.pq-executive .pq-title{border:1.5px solid #C9A24B;color:#0F1B3D;display:table;margin:16px auto;padding:2px 40px}
+.pq-executive th{background:#0F1B3D;color:#fff}.pq-executive td{border:1px solid #d8dce6}
+.pq-executive .tot td{background:#f6efdc;font-weight:800;font-size:16px}
+@media print{.pq{min-height:275mm;padding:8mm}.pq-executive .pq-head{margin:-8mm -8mm 14px;padding:14px 8mm}.pq-foot{inset-inline:8mm;bottom:6mm}}
+
+.scroll{overflow-x:auto}
+.extras-list{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px}
+.extra-cell label{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+.extra-del{background:none;border:0;color:var(--n-due);cursor:pointer;font-size:15px}
+.extra-input{width:100%}
+.extra-add{display:grid;grid-template-columns:1fr 120px auto;gap:10px;align-items:center;padding-top:14px;border-top:1px dashed var(--n-line)}
+.extra-add input{background:var(--n-card);color:var(--n-ink);border:1px solid var(--n-line);border-radius:10px;padding:9px 11px;font:inherit}
+.summary-row.mfg{font-weight:700}.summary-row.mfg .val{color:var(--n-ink)}
+.upload-btn{background:var(--n-soft);border:1.5px dashed var(--n-blue);color:var(--n-blue);border-radius:10px;font-family:'Cairo',sans-serif;font-weight:600}
+.coll-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:20px}
+.coll-card{background:var(--n-card);border-radius:16px;padding:20px 24px;box-shadow:0 1px 2px #0000000d}
+.coll-card small{display:block;color:var(--n-mute);font-size:13px}.coll-card strong{display:block;font-size:26px;margin-top:6px;font-weight:700}
+.ok{color:var(--n-ok)}.due{color:var(--n-due)}
+.coll-table{padding:10px 14px}.coll-table table{min-width:760px}
+.coll-table th,.coll-table td{text-align:start;padding:12px 10px}
+.coll-table tbody tr{cursor:pointer}.coll-table tbody tr:hover td{background:var(--n-soft)}
+.coll-table td.nm{font-weight:700}.mut{color:var(--n-mute)}
+#storeWarn{background:#FFF4D6;color:#6B4E00;padding:10px 16px;text-align:center;font-size:13px;position:relative;z-index:600}
+@media (max-width:900px){.coll-cards,.extras-list{grid-template-columns:1fr}.extra-add{grid-template-columns:1fr}}
+
+/* ضغط الحاسبة: تقليل الفراغات فقط، الخطوط كما هي */
+.view{padding:0 18px}.view-header{margin:0 -18px 12px;padding:10px 18px}
+.types-row{padding:12px 18px 0;gap:10px}.type-btn{padding:9px}
+.toolbar{padding:10px 18px;gap:10px}.pallet-name-row{padding:6px 18px 0}
+.table-wrap{padding:4px 18px 2px}tbody td,tbody tr:nth-child(even) td{padding:3px 3px}
+tbody td input,.spec-pick{padding:5px 7px}thead th{padding:7px 4px}
+.add-row-btn{margin:4px 18px 8px;padding:7px 16px}
+.extras-list{gap:8px;margin-bottom:8px}.extra-add{padding-top:8px}
+.summary-row{padding:3px 0}.costs-box,.images-box,.summary-box{padding:10px 14px}
+.field label{margin-bottom:2px}.print-bar{margin-top:10px;padding:10px 16px}

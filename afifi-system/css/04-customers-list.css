@@ -1,0 +1,19 @@
+/* CUSTOMERS LIST */
+.list-card{ background: var(--paper); border-radius:8px; overflow:hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.35); }
+.list-row{
+  display:flex; align-items:center; justify-content:space-between; padding:14px 20px;
+  border-bottom:1px solid var(--paper-line); background:#FFFFFF;
+}
+.list-row:nth-child(even){ background:#F4F7FC; }
+.list-row:last-child{ border-bottom:none; }
+.list-main strong{ font-family:'Cairo', sans-serif; font-size:15px; color:var(--wood-dark); }
+.list-sub{ font-size:12px; color:#6B7690; margin-top:3px; }
+.list-actions{ display:flex; gap:8px; }
+.icon-btn{
+  background:#EAF0FB; border:none; border-radius:5px; padding:7px 11px; cursor:pointer; font-size:13px;
+}
+.icon-btn.edit{ color: var(--wood); }
+.icon-btn.delete{ color: var(--red); }
+.icon-btn.open{ background: var(--brass); color:var(--wood-dark); font-weight:700; }
+.icon-btn.print{ background: var(--green-light); color: var(--green); }
+.empty-state{ padding:40px; text-align:center; color:#6B7690; font-size:14px; }

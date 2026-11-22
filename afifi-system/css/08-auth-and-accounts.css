@@ -1,0 +1,56 @@
+/* AUTH SCREEN */
+.auth-screen{
+  position:fixed; inset:0; z-index:200; display:flex; align-items:center; justify-content:center;
+  background: var(--wood-dark);
+  background-image: repeating-linear-gradient(90deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 40px);
+}
+.auth-card{
+  background: var(--paper); border-radius:10px; padding:30px 32px; width:360px; max-width:90vw;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+}
+.auth-brand{ text-align:center; margin-bottom:20px; }
+.auth-title{ font-family:'Cairo', sans-serif; font-weight:800; font-size:20px; color:var(--wood-dark); margin-top:6px;}
+.auth-sub{ font-size:12px; color:#6B7690; }
+.auth-hint{ font-size:12.5px; color:#6B7690; margin-bottom:14px; text-align:center; }
+.auth-error{ color: var(--red); font-size:12.5px; margin-top:8px; min-height:16px; text-align:center; }
+
+.account-box{ border-top:1px dashed #6B7690; margin-top:8px; padding-top:12px; }
+.account-name{ font-family:'Cairo', sans-serif; font-weight:700; font-size:13.5px; color: var(--brass-light); }
+.account-role{ font-size:11px; color:#C5D1E6; margin-bottom:8px; }
+
+.modal-field select{
+  width:100%; padding:9px 10px; border:1px solid var(--paper-line); border-radius:5px;
+  font-family:'Tajawal',sans-serif; font-size:14px; background:#FFFFFF;
+}
+
+.readonly-field input{ color:#6B7690; }
+.pallet-name-row{ display:flex; gap:14px; padding:18px 24px 0; }
+
+.toolbar.toolbar-5{ grid-template-columns: repeat(5, 1fr); }
+
+/* CUSTOMER ACCOUNTS (orders & payments) */
+.accounts-box{ background: var(--paper); border-radius:8px; padding:16px 20px; margin-bottom:16px; box-shadow: 0 12px 24px rgba(0,0,0,0.25); }
+.accounts-box h3{ font-family:'Cairo', sans-serif; font-size:14px; margin:0 0 12px; color:#6B7690; }
+.accounts-summary{ display:grid; grid-template-columns: repeat(3, 1fr); gap:10px; margin-bottom:16px; }
+.accounts-summary .stat{ background:#F4F7FC; border:1px solid var(--paper-line); border-radius:6px; padding:10px 12px; text-align:center; }
+.accounts-summary .stat .num{ font-family:'Cairo', sans-serif; font-weight:800; font-size:16px; color: var(--wood-dark); }
+.accounts-summary .stat .lbl{ font-size:11px; color:#6B7690; margin-top:2px; }
+.accounts-summary .stat.remaining .num{ color: var(--red); }
+.accounts-summary .stat.paid .num{ color: var(--green); }
+
+.order-card{ background:#FFFFFF; border:1px solid var(--paper-line); border-radius:6px; padding:12px 14px; margin-bottom:10px; }
+.order-head{ display:flex; justify-content:space-between; align-items:flex-start; gap:10px; flex-wrap:wrap; }
+.order-title{ font-family:'Cairo', sans-serif; font-weight:700; font-size:14px; color:var(--wood-dark); }
+.order-sub{ font-size:11.5px; color:#6B7690; margin-top:2px; }
+.order-amounts{ display:flex; gap:14px; font-size:12.5px; }
+.order-amounts span strong{ display:block; font-family:'Cairo', sans-serif; font-size:14px; }
+.order-actions{ display:flex; gap:6px; }
+.payments-list{ margin-top:10px; border-top:1px dashed var(--paper-line); padding-top:8px; }
+.payment-row{ display:flex; justify-content:space-between; align-items:center; font-size:12.5px; padding:4px 0; color:#4A5470; }
+.payment-row .del-payment{ background:none; border:none; color: var(--red); cursor:pointer; font-size:11px; }
+.remaining-badge{ display:inline-block; padding:2px 8px; border-radius:12px; font-size:11px; font-weight:700; }
+.remaining-badge.paid-off{ background: var(--green-light); color: var(--green); }
+.remaining-badge.owing{ background: var(--red-light); color: var(--red); }
+
+.payment-receipts{ display:inline-flex; gap:4px; margin-right:6px; vertical-align:middle; }
+.payment-receipt-thumb{ width:22px; height:22px; object-fit:cover; border-radius:3px; border:1px solid var(--paper-line); }

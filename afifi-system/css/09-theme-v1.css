@@ -1,0 +1,92 @@
+/* ===== الهوية الجديدة (تغيير الشكل فقط) ===== */
+:root{--n-bg:#F1F4F9;--n-card:#FFFFFF;--n-line:#E3E8F0;--n-ink:#16203A;--n-mute:#7B8497;--n-blue:#2563EB;--n-blue-ink:#FFFFFF;--n-side:#0F1B3D;--n-soft:#EFF4FF;--n-ok:#12A150;--n-due:#E5484D;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{font-family:'Cairo','Tajawal',sans-serif;background:var(--n-bg);color:var(--n-ink)}
+#app{height:100%;background:var(--n-bg)}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--n-blue);outline-offset:2px}
+.sidebar{width:250px;background:var(--n-side);border:0;color:#C9D3EA;padding:18px 14px}
+.brand{padding:6px 6px 18px;border-bottom:1px solid #ffffff1a;margin-bottom:16px}
+.brand-mark{width:42px;height:42px;border-radius:10px;background:var(--n-blue);color:var(--n-blue-ink);display:grid;place-items:center;font-size:20px;font-weight:800;font-family:'Cairo',sans-serif}
+.brand-title{color:#fff}.brand-sub{color:#9FB0D6}
+.nav-btn{color:#C9D3EA;border-radius:10px;padding:12px 14px;font-family:'Cairo',sans-serif}
+.nav-btn:hover{background:#ffffff14}
+.nav-btn.active{background:var(--n-blue);color:var(--n-blue-ink);font-weight:700;border:0;box-shadow:none}
+.backup-btn{background:transparent;border:1px solid #ffffff33;color:#C9D3EA;border-radius:10px}
+.backup-btn:hover{border-color:#fff;color:#fff}
+.account-box{border-top:1px solid #ffffff1a}.account-name{color:#fff}.account-role{color:#9FB0D6}
+.content{background:var(--n-bg);padding:0 0 60px}
+.view{max-width:1200px;padding:0 28px}
+.view-header{background:var(--n-card);margin:0 -28px 22px;padding:16px 28px;border-bottom:1px solid var(--n-line)}
+.view-header h1{color:var(--n-ink);font-size:22px}
+.hint{color:var(--n-mute)}
+.primary-btn,.secondary-btn,.danger-btn,.back-btn{border-radius:10px;font-family:'Cairo',sans-serif;font-weight:600}
+.primary-btn{background:var(--n-blue);color:var(--n-blue-ink)}.primary-btn:hover{filter:brightness(1.08);background:var(--n-blue)}
+.secondary-btn,.back-btn{background:var(--n-card);color:var(--n-blue);border:1px solid var(--n-line)}
+.danger-btn{background:var(--n-due);color:#fff}
+.sheet,.list-card,.specs-box,.accounts-box{background:var(--n-card);border-radius:16px;box-shadow:0 1px 2px #0000000d;color:var(--n-ink)}
+.toolbar{background:transparent;border:0;padding:18px 24px}
+.field label,.modal-field label,.cost-item label{color:var(--n-mute);font-size:13px}
+.field input,.modal-field input,.modal-field textarea,.modal-field select,.cost-item input,.specs-add-row input,.note-row input[type="text"],.specs-add-row select{background:var(--n-card);color:var(--n-ink);border:1px solid var(--n-line);border-radius:10px;padding:9px 11px}
+.field.brass{background:transparent;border-color:transparent}
+.readonly-field input{color:var(--n-mute)}
+.types-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:20px 24px 4px}
+.type-btn{background:var(--n-card);border:1.5px solid var(--n-line);border-radius:12px;padding:15px;font:600 15px 'Cairo',sans-serif;color:var(--n-ink);cursor:pointer}
+.type-btn.on{border-color:var(--n-blue);color:var(--n-blue);background:var(--n-soft)}
+.table-wrap{padding:8px 24px 6px}
+thead th{background:var(--n-bg);color:var(--n-mute);border:0;font-weight:600;font-size:13px;padding:11px 6px}
+thead th:first-child{border-radius:0 10px 10px 0}thead th:last-child{border-radius:10px 0 0 10px}
+tbody td,tbody tr:nth-child(even) td{background:var(--n-card);border:0;border-bottom:1px solid var(--n-line);padding:8px 4px}
+tbody td input{background:var(--n-card);color:var(--n-ink);border:1px solid var(--n-line);border-radius:10px;padding:8px 6px;text-align:center}
+tbody td input:focus{background:var(--n-soft)}
+td.rownum{background:var(--n-card)!important;color:var(--n-mute)}
+td.calc,td.volume-cell{background:var(--n-card)!important;color:var(--n-blue);font-weight:700;direction:ltr}
+.row-del-btn{color:var(--n-due);background:none;border:0;cursor:pointer;font-size:17px}
+.add-row-btn{background:var(--n-blue);color:var(--n-blue-ink);border:0;border-radius:10px;padding:9px 18px;font:600 14px 'Cairo',sans-serif;cursor:pointer;margin:6px 24px 14px}
+.spec-pick{width:100%;min-width:140px;text-align:start;background:var(--n-card);color:var(--n-mute);border:1px solid var(--n-line);border-radius:10px;padding:9px 11px;font:inherit;cursor:pointer;display:flex;justify-content:space-between;gap:8px}
+.spec-pick:after{content:"▾";color:var(--n-mute)}.spec-pick.has-value{color:var(--n-ink);font-weight:600}
+#pickMenu{display:none;position:fixed;z-index:300;background:var(--n-card);color:var(--n-ink);border:1px solid var(--n-line);border-radius:12px;box-shadow:0 8px 28px #0000002e;padding:6px;width:230px;max-height:340px;overflow:auto;font-family:'Cairo',sans-serif}
+#pickMenu button{display:block;width:100%;text-align:start;background:none;border:0;padding:9px 12px;border-radius:8px;font:inherit;color:var(--n-ink);cursor:pointer}
+#pickMenu button:hover{background:var(--n-soft)}
+#pickMenu .own{border-top:1px solid var(--n-line);margin-top:6px;padding:8px 4px 2px}
+#pickMenu .own input{width:100%;margin-bottom:6px;background:var(--n-card);color:var(--n-ink);border:1px solid var(--n-line);border-radius:8px;padding:8px}
+#pickMenu .own-add{background:var(--n-blue);color:var(--n-blue-ink);text-align:center;font-weight:600}
+.images-box,.costs-box,.calc-picker-item,.order-card{background:var(--n-card);border:1px solid var(--n-line);border-radius:12px;color:var(--n-ink)}
+.costs-box h3,.images-box h3,.accounts-box h3,.specs-box h3,.notes-box h3{color:var(--n-ink);border-color:var(--n-line)}
+.extra-row{display:grid;grid-template-columns:1fr 130px 30px;gap:10px;align-items:center;margin-bottom:10px}
+.extra-row small,.empty-extras{color:var(--n-mute);font-size:12.5px}
+.extra-input{background:var(--n-card);color:var(--n-ink);border:1px solid var(--n-line);border-radius:10px;padding:8px;text-align:center;font:inherit}
+.add-extra-btn{margin-top:4px}
+.summary-box{background:var(--n-soft);color:var(--n-ink);border-radius:12px}
+.summary-row{border-bottom:1px solid var(--n-line)}
+.summary-row .lbl{color:var(--n-mute)}.summary-row .val{direction:ltr;unicode-bidi:isolate}
+.summary-row.final .lbl{color:var(--n-ink)}.summary-row.final .val{color:var(--n-blue)}
+.summary-row.gain .val{color:var(--n-ok)}
+.summary-note{font-size:12px;color:var(--n-mute);margin-top:8px}
+.list-row,.list-row:nth-child(even){background:var(--n-card);border-bottom:1px solid var(--n-line)}
+.list-main strong,.order-title{color:var(--n-ink)}.list-sub,.order-sub,.payment-row{color:var(--n-mute)}
+.icon-btn{border-radius:8px;background:var(--n-soft);color:var(--n-blue)}
+.icon-btn.edit{color:var(--n-blue)}.icon-btn.delete{color:var(--n-due);background:transparent}
+.icon-btn.open{background:var(--n-blue);color:var(--n-blue-ink)}
+.icon-btn.print{background:var(--n-soft);color:var(--n-ok)}
+.empty-state{color:var(--n-mute)}
+.accounts-summary .stat{background:var(--n-bg);border:1px solid var(--n-line);border-radius:12px}
+.accounts-summary .stat .num{color:var(--n-ink)}.accounts-summary .stat .lbl{color:var(--n-mute)}
+.accounts-summary .stat.paid .num,.remaining-badge.paid-off{color:var(--n-ok)}
+.accounts-summary .stat.remaining .num,.remaining-badge.owing{color:var(--n-due)}
+.remaining-badge.paid-off,.remaining-badge.owing{background:var(--n-soft)}
+.spec-chip{background:var(--n-soft);color:var(--n-ink);border-color:var(--n-line)}
+.quote-items-table th{background:var(--n-bg);color:var(--n-mute)}
+.quote-items-table td{background:var(--n-card);border-color:var(--n-line);color:var(--n-ink)}
+.modal-overlay{background:rgba(10,16,34,.6)}
+.modal,.auth-card{background:var(--n-card);color:var(--n-ink);border-radius:16px}
+.modal h2,.auth-title{color:var(--n-ink)}.confirm-text,.auth-hint{color:var(--n-mute)}
+.auth-screen{background:var(--n-side)}.auth-sub{color:var(--n-mute)}
+.auth-brand .brand-mark{margin:0 auto 8px}
+@media (max-width:900px){
+ #app{flex-direction:column;height:auto;overflow:visible}
+ .sidebar{width:auto;padding:10px}.brand,.account-box,.sidebar>.backup-btn{display:none}
+ .nav{flex-direction:row;flex-wrap:wrap}.nav-btn{padding:9px 12px}
+ .content{overflow:visible}.view{padding:0 12px}.view-header{margin:0 -12px 16px;padding:14px 12px}
+ .types-row{grid-template-columns:1fr}.totals{grid-template-columns:1fr}.toolbar,.toolbar.toolbar-5{grid-template-columns:repeat(2,1fr)}
+}
